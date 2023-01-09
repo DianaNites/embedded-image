@@ -97,7 +97,7 @@ impl Image {
     // insane
     pub fn to_color(&mut self, color: ColorSpace) {
         for p in &mut self.data {
-            let mut q = Matrix3x1::from_column_slice(p);
+            let mut q = Matrix3x1::from_row_slice(&p[..3]);
             // TODO: ugh this doesn't need to be in the loop but it doesn't feel like moving it right now
             match (self.color, color) {
                 (ColorSpace::sRGB, ColorSpace::sRGBLinear) => q = q.map(srgb_to_rgb),
