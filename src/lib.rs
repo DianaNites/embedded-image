@@ -3,11 +3,13 @@
 #![allow(unused_imports, dead_code)]
 extern crate alloc;
 
-use crate::transforms::*;
 use alloc::{vec, vec::Vec};
 use core::slice::from_raw_parts;
+
 use na::{Matrix3x1, Matrix4x1};
 use nalgebra as na;
+
+use crate::transforms::*;
 
 mod transforms;
 
@@ -98,7 +100,8 @@ impl Image {
     pub fn to_color(&mut self, color: ColorSpace) {
         for p in &mut self.data {
             let mut q = Matrix3x1::from_row_slice(&p[..3]);
-            // TODO: ugh this doesn't need to be in the loop but it doesn't feel like moving it right now
+            // TODO: ugh this doesn't need to be in the loop but it doesn't feel like moving
+            // it right now
             match (self.color, color) {
                 (ColorSpace::sRGB, ColorSpace::sRGBLinear) => q = q.map(srgb_to_rgb),
                 (ColorSpace::sRGB, ColorSpace::SimplesRGB) => {
