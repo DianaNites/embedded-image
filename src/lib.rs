@@ -34,7 +34,7 @@ pub enum ColorSpace {
     /// Display P3 / P3-D65
     DisplayP3,
 
-    /// No color-space / "display" / "as-is" / "web"
+    /// No color-space / "as-is"
     ///
     /// This just uses the RGB values as-is, no conversions,
     /// whatever happens, happens.
