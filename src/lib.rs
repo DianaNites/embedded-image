@@ -1,6 +1,6 @@
 //! Embedded image handling library
 #![no_std]
-#![allow(unused_imports, dead_code)]
+#![allow(unused_imports, dead_code, clippy::wrong_self_convention)]
 extern crate alloc;
 
 use alloc::{vec, vec::Vec};
